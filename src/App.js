@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+
+import { useState, useEffect } from "react";
 import './App.css';
+import RandomUser from './components/RandomUser';
+import axios from 'axios';
+import Footer from './components/footer/Footer';
 
 function App() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    axiosUser();
+  }, []);
+
+  const axiosUser = async () => {
+   const response = await axios("https://randomuser.me/api/")
+    // console.log(response);
+    setUser(response.data.results);
+    console.log(response.data.results);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RandomUser user={user} axiosUser={axiosUser}/>
+      <Footer/>
     </div>
   );
 }
