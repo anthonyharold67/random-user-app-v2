@@ -9,7 +9,7 @@ import growingUpManSvg from "../assets/growing-up-man.svg";
 import growingUpWomanSvg from "../assets/growing-up-woman.svg"
 
 const RandomUser = ({user,axiosUser}) => {
-  console.log(user)
+  
   const [header,setHeader] = useState()
   const [text,setText]=useState()
   const [table,setTable] = useState([])
