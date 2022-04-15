@@ -32,7 +32,7 @@ SOLUTION
 ├── package.json
 ```
 
-## Expected Outcome
+
 
 ![Random User App](random-user-v2.gif)
 
