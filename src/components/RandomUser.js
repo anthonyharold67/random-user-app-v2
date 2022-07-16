@@ -8,16 +8,16 @@ import padLockSvg from "../assets/padlock.svg";
 import growingUpManSvg from "../assets/growing-up-man.svg";
 import growingUpWomanSvg from "../assets/growing-up-woman.svg"
 
-const RandomUser = ({user,axiosUser}) => {
+const RandomUser = ({user,axiosUser,table,setTable}) => {
   
-  const [header,setHeader] = useState()
-  const [text,setText]=useState()
-  const [table,setTable] = useState([])
+  const [header,setHeader] = useState("My name is")
+  const [text,setText]=useState(`${user[0].name.first} ${user[0].name.last}`)
+  
   const [userAdd,setUserAdd] = useState([])
   const handleClick = ()=> {
     axiosUser();
-    setHeader("")
-    setText("")
+    setHeader("My name is")
+    setText(`${user[0].name.first} ${user[0].name.last}`)
   }
   const addClick = (item)=> {
     setUserAdd([...userAdd,item.phone])
@@ -32,9 +32,10 @@ const RandomUser = ({user,axiosUser}) => {
     
 
   }
+ 
   return (
     <div className="random">
-        {user?.map((item, index) => (
+        {user && user?.map((item, index) => (
         <div key={index} className="card-wrapper">
           <div className="header-container">
             <img src={item.picture.large} alt="user" />
